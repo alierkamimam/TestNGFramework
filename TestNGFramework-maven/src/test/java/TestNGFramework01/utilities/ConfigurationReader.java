@@ -9,7 +9,7 @@ public class ConfigurationReader {
     static {
         try {
             // Location of properties
-            String path = System.getProperty("user.dir") + "\\src\\test\\TestNGFramework01\\configuration.properties";
+            String path = System.getProperty("user.dir") + "\\src\\test\\java\\TestNGFramework01\\configuration.properties";
             // Getting this file as a stream
             FileInputStream input = new FileInputStream(path);
             // Creating an object of Properties class
