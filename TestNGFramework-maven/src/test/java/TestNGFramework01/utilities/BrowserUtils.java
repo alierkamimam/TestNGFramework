@@ -110,4 +110,9 @@ public class BrowserUtils {
         WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
+
+    public static void navigateBackAndForwardToDismissAds() {
+        Driver.getDriver().navigate().back();
+        Driver.getDriver().navigate().forward();
+    }
 }
