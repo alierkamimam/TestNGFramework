@@ -20,7 +20,7 @@ public class RegistrationTest extends BaseTest {
         String environment = ConfigurationReader.getProperty("environment");
 
         Driver.getDriver().get(URL);
-        System.out.println(":::::: Test Information ::::::\n\tURL :\"" + URL + "\"\n\tBrowser :\"" + browser + "\"\n\tEnvironment :"+environment);
+        System.out.println(":::::: Test Information ::::::\n\tURL :\"" + URL + "\"\n\tBrowser :\"" + browser + "\"\n\tEnvironment :" + environment);
         BrowserUtils.wait(1);
 
 
@@ -32,31 +32,52 @@ public class RegistrationTest extends BaseTest {
         //Launch browser and Navigate to url 'http://automationexercise.com'
         //Click on 'Signup / Login' button
         pages.getHomePage().clickSignupLoginButton();
-        String newUserSignUpMessage = pages.getLoginPage().getNewUserSignupMessage();
+        String newUserSignUpMessage = pages.getLoginPage().setNewUserSignUpMessage();
 
         //Verify 'New User Signup!' is visible
         softAssert.assertEquals(newUserSignUpMessage, "New User Signup!", "Test Case 1 - Verify 'New User Signup!' is visible");
+        //LoginPage
+        pages.getLoginPage().setSignupNameBox("erkam123");
+        pages.getLoginPage().setSignupEmailAddressBox("erk123@mail.com");
+        pages.getLoginPage().setSignupButton();
+        BrowserUtils.navigateBackAndForwardToDismissAds();
 
-        pages.getLoginPage().setSignupNewUserNameBox("ali erkam");
-        pages.getLoginPage().setSignupNewUserEmailBox("erkam@mail.com");
-        pages.getLoginPage().clickSignupButton();
+        //SignUpPage
+        pages.getSignupPage().setSelectButtonMen();
+        pages.getSignupPage().setPasswordBox("12345");
+        pages.getSignupPage().setDate("1", "Month", "1997");
+        pages.getSignupPage().setFirstNameBox("x");
+        pages.getSignupPage().setLastNameBox(":x");
+        pages.getSignupPage().setCompanyBox("inar");
+        pages.getSignupPage().setAddress1Box("abcd");
+        pages.getSignupPage().setAddress2Box("123345");
+        pages.getSignupPage().setCountryDropDown("Canada");
+        pages.getSignupPage().setStateBox("Dallas");
+        pages.getSignupPage().setCityBox("hulln");
+        pages.getSignupPage().setZipCodeBox("0990");
+        pages.getSignupPage().setMobileNumberBox("0555");
+        BrowserUtils.wait(3);
+        pages.getSignupPage().setCreateAccountButton();
 
-        String actualEnterAccountInformationTitle = pages.getSignupPage().getEnterAccountInformationTitle();
-        softAssert.assertEquals(actualEnterAccountInformationTitle, "ENTER ACCOUNT INFORMATION", "ERROR : Test Case 1 - Verify that 'ENTER ACCOUNT INFORMATION' is visible\\n");
+        String accountCreatedMessage = pages.getSignupPage().accountCreatedMessage();
+        softAssert.assertEquals(accountCreatedMessage, "ACCOUNT CREATED!", "Test Case 1 - Verify 'Account Created!' is visible");
 
+        pages.getSignupPage().clickContinueButton();
+        BrowserUtils.navigateBackAndForwardToDismissAds();
 
-        pages.getSignupPage().selectTitleWomen();
-        pages.getSignupPage().setPassword("12345");
-        pages.getSignupPage().setDateOfBirth("12", "April", "1945");
+        String loggedMessage = pages.getHomePage().loggedMessage();
 
+        softAssert.assertEquals(loggedMessage,"Logged in as erkam123");
 
-        pages.getSignupPage().selectProductsPageButton();
-        pages.getProductsPage().searchProduct("Fancy Green Top");
-
-        BrowserUtils.wait(6);
+        pages.getHomePage().setClickDeleteAccount();
+        String accountDeletedMessage=pages.getHomePage().accountDeletedMessage();
+        softAssert.assertEquals(accountDeletedMessage,"ACCOUNT DELETED!","Test Case 1 - Verify 'Account Deleted!' is visible");
 
         softAssert.assertAll();
+
+
     }
+
 
     @AfterSuite
     public void afterTest() {
