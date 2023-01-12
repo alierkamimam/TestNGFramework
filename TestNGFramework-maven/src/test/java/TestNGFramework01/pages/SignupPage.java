@@ -1,5 +1,6 @@
 package TestNGFramework01.pages;
 
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
@@ -12,83 +13,152 @@ public class SignupPage extends BasePage {
     private WebElement enterAccountInformationTitle;
 
     @FindBy(id = "id_gender1")
-    private WebElement id_genderMen;
+    private WebElement selectButtonMen;
 
     @FindBy(id = "id_gender2")
-    private WebElement id_genderWomen;
-
-    @FindBy(id = "first_name")
-    private WebElement FirstNameBox;
-
-    @FindBy(id = "email")
-    private WebElement emailBox;
+    private WebElement selectButtonWomen;
 
     @FindBy(id = "password")
     private WebElement passwordBox;
 
     @FindBy(id = "days")
-    private WebElement dateOfBirth_DAYs;
+    private WebElement birthDateOf_DAYs;
 
     @FindBy(id = "months")
-    private WebElement dateOfBirth_MONTHs;
+    private WebElement birthDateOf_MONTHs;
 
     @FindBy(id = "years")
-    private WebElement dateOfBirth_YEARs;
+    private WebElement birthDateOf_YEARs;
 
-    @FindBy(css = "a[href='/products']")
-    private WebElement productsPageButton;
+    @FindBy(id = "first_name")
+    private WebElement firstNameBox;
+
+    @FindBy(id = "last_name")
+    private WebElement lastNameBox;
+
+    @FindBy(id = "company")
+    private WebElement companyBox;
+
+    @FindBy(id = "address1")
+    private WebElement address1Box;
+
+    @FindBy(id = "address2")
+    private WebElement address2Box;
+
+    @FindBy(id = "country")
+    private WebElement countryDropDown;
+
+    @FindBy(id = "state")
+    private WebElement stateBox;
+
+    @FindBy(id = "city")
+    private WebElement cityBox;
+
+    @FindBy(id = "zipcode")
+    private WebElement zipCodeBox;
+
+    @FindBy(id = "mobile_number")
+    private WebElement mobileNumberBox;
+
+    @FindBy(css = "button[data-qa='create-account']")
+    private WebElement createAccountButton;
+
+    @FindBy(css = "h2[class='title text-center'] b")
+    private WebElement accountCreatedMessage;
 
 
-    public SignupPage() {
+    @FindBy(css = ".btn.btn-primary")
+    private WebElement continueButton;
 
+    public void setSelectButtonMen() {
+        selectButtonMen.click();
     }
 
-    public String getEnterAccountInformationTitle() {
-        return enterAccountInformationTitle.getText();
+    public void setSelectButtonWomen() {
+        selectButtonWomen.click();
     }
 
-    public void selectTitleMen() {
-        id_genderMen.click();
-    }
-
-    public void selectTitleWomen() {
-        id_genderWomen.click();
-    }
-
-    public void setPassword(String password) {
+    public void setPasswordBox(String password) {
         passwordBox.sendKeys(password);
     }
 
-    public void setDateOfBirth(String day, String month, String year) {
+    public void setDate(String day, String month, String year) {
         setDay(day);
         setMonth(month);
         setYear(year);
-
     }
 
     private void setYear(String year) {
-        Select select = new Select(dateOfBirth_YEARs);
+        Select select = new Select(birthDateOf_YEARs);
         select.selectByVisibleText(year);
 
     }
 
     private void setMonth(String month) {
-        Select select = new Select(dateOfBirth_MONTHs);
+        Select select = new Select(birthDateOf_MONTHs);
         select.selectByVisibleText(month);
-
-
     }
 
     private void setDay(String day) {
-        Select select = new Select(dateOfBirth_DAYs);
+        Select select = new Select(birthDateOf_DAYs);
         select.selectByVisibleText(day);
+    }
 
+    public void setFirstNameBox(String firstName) {
+        firstNameBox.sendKeys(firstName);
+    }
+
+    public void setLastNameBox(String lastName) {
+        lastNameBox.sendKeys(lastName);
+    }
+
+    public void setCompanyBox(String companyName) {
+        companyBox.sendKeys(companyName);
+    }
+
+    public void setAddress1Box(String address1) {
+        address1Box.sendKeys(address1);
+    }
+
+    public void setAddress2Box(String address2) {
+        address2Box.sendKeys(address2);
+    }
+
+    public void setCountryDropDown(String country) {
+        Select select = new Select(countryDropDown);
+        select.selectByVisibleText(country);
 
     }
 
-    public void selectProductsPageButton() {
-        productsPageButton.click();
+    public void setStateBox(String stateName) {
+        stateBox.sendKeys(stateName);
     }
 
+    public void setCityBox(String cityName) {
+        cityBox.sendKeys(cityName);
+    }
 
+    public void setZipCodeBox(String zipCode) {
+        zipCodeBox.sendKeys(zipCode);
+
+    }
+
+    public void setCreateAccountButton() {
+        createAccountButton.click();
+    }
+
+    public void setMobileNumberBox(String mobileNumber) {
+        mobileNumberBox.sendKeys(mobileNumber);
+    }
+
+    public String accountCreatedMessage() {
+        return accountCreatedMessage.getText();
+    }
+    public void clickContinueButton(){
+        continueButton.click();
+    }
 }
+
+
+
+
