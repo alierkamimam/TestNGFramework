@@ -21,6 +21,7 @@ public class Pages {
         this.loginPage = new LoginPage();
         this.productsPage = new ProductsPage();
         this.accountCreatedPage=new AccountCreatedPage();
+        this.accountDeletePage=new AccountDeletePage();
     }
 
     public AccountDeletePage getAccountDeletePage() {
