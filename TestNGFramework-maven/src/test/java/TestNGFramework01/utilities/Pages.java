@@ -1,10 +1,7 @@
 package TestNGFramework01.utilities;
 
 
-import TestNGFramework01.pages.HomePage;
-import TestNGFramework01.pages.LoginPage;
-import TestNGFramework01.pages.ProductsPage;
-import TestNGFramework01.pages.SignupPage;
+import TestNGFramework01.pages.*;
 
 public class Pages {
     private HomePage homePage;
@@ -13,12 +10,25 @@ public class Pages {
 
     private ProductsPage productsPage;
 
+    private AccountCreatedPage accountCreatedPage;
+
+    private AccountDeletePage accountDeletePage;
+
 
     public Pages() {
         this.homePage = new HomePage();
         this.signupPage = new SignupPage();
         this.loginPage = new LoginPage();
         this.productsPage = new ProductsPage();
+        this.accountCreatedPage=new AccountCreatedPage();
+    }
+
+    public AccountDeletePage getAccountDeletePage() {
+        return accountDeletePage;
+    }
+
+    public AccountCreatedPage getAccountCreatedPage() {
+        return accountCreatedPage;
     }
 
     public SignupPage getSignupPage() {
@@ -40,3 +50,4 @@ public class Pages {
         return productsPage;
     }
 }
+
