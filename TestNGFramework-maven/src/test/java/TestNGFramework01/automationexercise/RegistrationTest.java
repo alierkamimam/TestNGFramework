@@ -37,8 +37,8 @@ public class RegistrationTest extends BaseTest {
         //Verify 'New User Signup!' is visible
         softAssert.assertEquals(newUserSignUpMessage, "New User Signup!", "Test Case 1 - Verify 'New User Signup!' is visible");
         //LoginPage
-        pages.getLoginPage().setSignupNameBox("erkam123");
-        pages.getLoginPage().setSignupEmailAddressBox("erk123@mail.com");
+        pages.getLoginPage().setSignupNameBox("erkam4123");
+        pages.getLoginPage().setSignupEmailAddressBox("erk1234@mail.com");
         pages.getLoginPage().setSignupButton();
         BrowserUtils.navigateBackAndForwardToDismissAds();
 
@@ -57,21 +57,24 @@ public class RegistrationTest extends BaseTest {
         pages.getSignupPage().setZipCodeBox("0990");
         pages.getSignupPage().setMobileNumberBox("0555");
         BrowserUtils.wait(3);
-        pages.getSignupPage().setCreateAccountButton();
+        pages.getAccountCreatedPage().createAccountButton();
 
-        String accountCreatedMessage = pages.getSignupPage().accountCreatedMessage();
+        String accountCreatedMessage = pages.getAccountCreatedPage().accountCreatedMessage();
         softAssert.assertEquals(accountCreatedMessage, "ACCOUNT CREATED!", "Test Case 1 - Verify 'Account Created!' is visible");
 
-        pages.getSignupPage().clickContinueButton();
+        pages.getAccountCreatedPage().continueButton();
         BrowserUtils.navigateBackAndForwardToDismissAds();
 
         String loggedMessage = pages.getHomePage().loggedMessage();
 
-        softAssert.assertEquals(loggedMessage,"Logged in as erkam123");
+        softAssert.assertEquals(loggedMessage, "Logged in as erkam123", "Test Case 1 - Verify 'Logged in as <name>' is visible");
 
         pages.getHomePage().setClickDeleteAccount();
-        String accountDeletedMessage=pages.getHomePage().accountDeletedMessage();
-        softAssert.assertEquals(accountDeletedMessage,"ACCOUNT DELETED!","Test Case 1 - Verify 'Account Deleted!' is visible");
+        BrowserUtils.wait(3);
+
+        String actualAccountDeletedMessage = pages.getAccountDeletePage().getAccountDeletedMessage();
+        softAssert.assertEquals(actualAccountDeletedMessage, "ACCOUNT DELETED!", "Test Case 1 - Verify 'Account Deleted!' is visible");
+        pages.getAccountDeletePage().getClickContinueButton();
 
         softAssert.assertAll();
 
@@ -82,7 +85,7 @@ public class RegistrationTest extends BaseTest {
     @AfterSuite
     public void afterTest() {
         // Perform cleanup tasks or generate test reports here
-        Driver.getDriver().quit();
+        // Driver.getDriver().quit();
     }
 
 
