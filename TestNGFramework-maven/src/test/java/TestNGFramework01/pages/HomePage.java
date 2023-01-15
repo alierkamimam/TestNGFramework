@@ -29,9 +29,6 @@ public class HomePage extends BasePage {
     @FindBy(css = "a[href='/delete_account']")
     private WebElement clickDeleteAccount;
 
-    @FindBy(css = "h2[class='title text-center'] b")
-    private WebElement accountDeletedMessage;
-
 
     public void clickSignupLoginButton() {
         BrowserUtils.verifyElementDisplayed(SignupLoginButton);
@@ -46,13 +43,8 @@ public class HomePage extends BasePage {
     public String loggedMessage() {
         return loggedInASName.getText();
     }
-
     public void setClickDeleteAccount() {
         clickDeleteAccount.click();
-    }
-
-    public String accountDeletedMessage() {
-        return accountDeletedMessage.getText();
     }
 
 
