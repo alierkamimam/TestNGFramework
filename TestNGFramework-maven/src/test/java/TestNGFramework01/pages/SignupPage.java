@@ -60,15 +60,6 @@ public class SignupPage extends BasePage {
     @FindBy(id = "mobile_number")
     private WebElement mobileNumberBox;
 
-    @FindBy(css = "button[data-qa='create-account']")
-    private WebElement createAccountButton;
-
-    @FindBy(css = "h2[class='title text-center'] b")
-    private WebElement accountCreatedMessage;
-
-
-    @FindBy(css = ".btn.btn-primary")
-    private WebElement continueButton;
 
     public void setSelectButtonMen() {
         selectButtonMen.click();
@@ -143,20 +134,11 @@ public class SignupPage extends BasePage {
 
     }
 
-    public void setCreateAccountButton() {
-        createAccountButton.click();
-    }
 
     public void setMobileNumberBox(String mobileNumber) {
         mobileNumberBox.sendKeys(mobileNumber);
     }
 
-    public String accountCreatedMessage() {
-        return accountCreatedMessage.getText();
-    }
-    public void clickContinueButton(){
-        continueButton.click();
-    }
 }
 
 
