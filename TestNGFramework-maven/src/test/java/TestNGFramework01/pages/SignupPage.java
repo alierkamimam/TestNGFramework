@@ -61,6 +61,7 @@ public class SignupPage extends BasePage {
     private WebElement mobileNumberBox;
 
 
+
     public void setSelectButtonMen() {
         selectButtonMen.click();
     }
@@ -140,6 +141,7 @@ public class SignupPage extends BasePage {
     }
 
 }
+
 
 
 
