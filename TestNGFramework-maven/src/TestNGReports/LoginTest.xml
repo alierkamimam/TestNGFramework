@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <listeners>
+        <listener class-name="TestNGFramework01.utilities.Listeners"></listener>
+    </listeners>
+    <test verbose="2" preserve-order="true"
+          name="C:/Users/Ali Erkam �MAM/Desktop/TestNGFramework/TestNGFramework-maven/src/test/java/TestNGFramework01/automationexercise/LoginTest.java">
+        <classes>
+            <class name="TestNGFramework01.automationexercise.LoginTest">
+                <methods>
+                    <include name="Test_Case02_LoginUser_Correct_Email_Password"/>
+                    <include name="Test_Case03_LoginUser_InCorrect_Email_Password"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
