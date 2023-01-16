@@ -32,10 +32,16 @@ public class LoginPage extends BasePage {
     @FindBy(xpath = "//p[text()='Your email or password is incorrect!']")
     private WebElement inCorrectMessage;
 
+    @FindBy(xpath = "//p[text()='Email Address already exist!']")
+    private WebElement emailAddressAlreadyExist;
+
 
     public void setLoginAccountEmailAddressBox(String loginEmail) {
         loginAccountEmailAddressBox.sendKeys(loginEmail);
 
+    }
+    public String getEmailAddressAlreadyExist() {
+        return emailAddressAlreadyExist.getText();
     }
 
     public void setLoginAccountPasswordBox(String loginPassword) {
