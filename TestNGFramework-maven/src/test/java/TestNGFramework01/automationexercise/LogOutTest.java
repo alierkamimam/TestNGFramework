@@ -4,11 +4,13 @@ import TestNGFramework01.utilities.Driver;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import java.io.IOException;
+
 public class LogOutTest extends BaseTest {
     SoftAssert softAssert = new SoftAssert();
 
     @Test
-    public void Test_Case04_Log_Out_User() {
+    public void Test_Case_04_Log_Out_User() {
 
         // Launch browser
         //Navigate to url 'http://automationexercise.com'
@@ -38,6 +40,41 @@ public class LogOutTest extends BaseTest {
         pages.getHeader().clickLogOutButton();
 
         softAssert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://automationexercise.com/login");
+        softAssert.assertAll();
+
+
+    }
+
+    @Test
+    public void Test_Case_05_Register_User_with_existing_email() throws IOException {
+
+        //Launch browser
+        //Navigate to url 'http://automationexercise.com'
+
+        //Verify that home page is visible successfully
+        softAssert.assertEquals(Driver.getDriver().getCurrentUrl(), "https://automationexercise.com/");
+
+
+        //Click on 'Signup / Login' button
+        pages.getHomePage().clickSignupLoginButton();
+
+        //Verify 'New User Signup!' is visible
+        String newUserMessage = pages.getLoginPage().setNewUserSignUpMessage();
+        softAssert.assertEquals(newUserMessage, "New User Signup!");
+
+        // Enter name and already registered email address
+        pages.getLoginPage().setSignupNameBox("123");
+        pages.getLoginPage().setSignupEmailAddressBox("123@123");
+
+
+        //Click 'Signup' button
+        pages.getLoginPage().setSignupButton();
+
+        //Verify error 'Email Address already exist!' is visible
+        String emailAddressAlreadyExist = pages.getLoginPage().getEmailAddressAlreadyExist();
+        softAssert.assertEquals(emailAddressAlreadyExist, "Email Address already exist!");
+
+        getScreenshot("TestCase05", Driver.getDriver());
         softAssert.assertAll();
 
 
