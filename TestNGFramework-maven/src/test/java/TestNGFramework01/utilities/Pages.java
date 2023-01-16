@@ -14,6 +14,8 @@ public class Pages {
 
     private AccountDeletePage accountDeletePage;
 
+    private Header header;
+
 
     public Pages() {
         this.homePage = new HomePage();
@@ -22,6 +24,7 @@ public class Pages {
         this.productsPage = new ProductsPage();
         this.accountCreatedPage=new AccountCreatedPage();
         this.accountDeletePage=new AccountDeletePage();
+        this.header=new Header();
     }
 
     public AccountDeletePage getAccountDeletePage() {
@@ -49,6 +52,10 @@ public class Pages {
 
     public ProductsPage getProductsPage() {
         return productsPage;
+    }
+
+    public Header getHeader(){
+        return header;
     }
 }
 
