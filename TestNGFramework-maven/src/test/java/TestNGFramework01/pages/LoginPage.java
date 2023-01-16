@@ -26,6 +26,12 @@ public class LoginPage extends BasePage {
     @FindBy(css = "div[class='signup-form'] h2")
     private WebElement newUserSignUpMessage;
 
+    @FindBy(css = "div[class='login-form'] h2")
+    private WebElement loginAccountMessage;
+
+    @FindBy(xpath = "//p[text()='Your email or password is incorrect!']")
+    private WebElement inCorrectMessage;
+
 
     public void setLoginAccountEmailAddressBox(String loginEmail) {
         loginAccountEmailAddressBox.sendKeys(loginEmail);
@@ -62,5 +68,13 @@ public class LoginPage extends BasePage {
         return newUserSignUpMessage.getText();
 
 
+    }
+
+    public String LoginAccountMessage() {
+        return loginAccountMessage.getText();
+    }
+
+    public String inCorrectMessage() {
+        return inCorrectMessage.getText();
     }
 }
