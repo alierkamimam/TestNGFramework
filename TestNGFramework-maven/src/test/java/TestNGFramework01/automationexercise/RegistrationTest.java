@@ -12,20 +12,6 @@ public class RegistrationTest extends BaseTest {
 
     SoftAssert softAssert = new SoftAssert(); // We should use soft assertion because in this test case we have multiple cases to test
 
-    @BeforeSuite
-    public void setUpSuite() {
-        // code that is executed before the entire test suite
-        String URL = ConfigurationReader.getProperty("url");
-        String browser = ConfigurationReader.getProperty("browser");
-        String environment = ConfigurationReader.getProperty("environment");
-
-        Driver.getDriver().get(URL);
-        System.out.println(":::::: Test Information ::::::\n\tURL :\"" + URL + "\"\n\tBrowser :\"" + browser + "\"\n\tEnvironment :" + environment);
-        BrowserUtils.wait(1);
-
-
-    }
-
     @Test(priority = 0)
     public void Test_1_Register_User() {
 
@@ -91,12 +77,6 @@ public class RegistrationTest extends BaseTest {
 
     }
 
-
-    @AfterSuite
-    public void afterTest() {
-        // Perform cleanup tasks or generate test reports here
-        // Driver.getDriver().quit();
-    }
 
 
 }
