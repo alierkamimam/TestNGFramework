@@ -3,10 +3,7 @@ package TestNGFramework01.utilities;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.junit.Assert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -120,6 +117,12 @@ public class BrowserUtils {
     public static void navigateBackAndForwardToDismissAds() {
         Driver.getDriver().navigate().back();
         Driver.getDriver().navigate().forward();
+    }
+
+    public static void scrollDown(String value){
+        JavascriptExecutor js= (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy(0,"+value+")");
+
     }
 
 
