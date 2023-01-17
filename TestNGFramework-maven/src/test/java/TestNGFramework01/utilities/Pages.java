@@ -15,6 +15,7 @@ public class Pages {
     private AccountDeletePage accountDeletePage;
 
     private Header header;
+    private  ContactUsPage contactUsPage;
 
 
     public Pages() {
@@ -25,6 +26,7 @@ public class Pages {
         this.accountCreatedPage=new AccountCreatedPage();
         this.accountDeletePage=new AccountDeletePage();
         this.header=new Header();
+        this.contactUsPage=new ContactUsPage();
     }
 
     public AccountDeletePage getAccountDeletePage() {
@@ -56,6 +58,9 @@ public class Pages {
 
     public Header getHeader(){
         return header;
+    }
+    public ContactUsPage getContactUsPage(){
+        return contactUsPage;
     }
 }
 
